@@ -1,0 +1,6 @@
+# Tested on Fedora (kernel 7.x), Python 3.12.16
+mediapipe>=0.10.20,<2       # tested 1.2.3 (Tasks API: HandLandmarker)
+opencv-contrib-python>=4.10 # tested 5.1.0 (mediapipe depends on the contrib build; don't also install opencv-python)
+numpy>=1.26                 # tested 2.5.5
+pygame-ce>=2.5              # tested 2.5.8 (SDL 2.32)
+pytest>=8                   # tests only

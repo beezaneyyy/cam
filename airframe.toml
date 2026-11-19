@@ -1,0 +1,56 @@
+# AIRFRAME configuration.
+# Every key is optional; missing keys fall back to the defaults in
+# airframe/config/settings.py. Calibration done inside the app (panel "C")
+# is saved separately to ~/.config/airframe/calibration.json and overrides
+# the [gestures] values below.
+
+[camera]
+device = 0          # /dev/video0. Can also be a path to a video file.
+width = 1280
+height = 720
+fps = 30
+mjpg = true         # needed by most USB webcams for 720p at 30 FPS
+mirror = true
+
+[tracking]
+model_path = "models/hand_landmarker.task"
+num_hands = 2
+min_detection_confidence = 0.6
+min_presence_confidence = 0.5
+min_tracking_confidence = 0.5
+detect_width = 640  # lower = faster tracking, less precision
+
+[gestures]
+pinch_on = 0.22           # pinch engages below this thumb–index / palm ratio
+pinch_off = 0.36          # and releases above this one (hysteresis)
+pinch_on_frames = 3
+pinch_warmup_frames = 5   # frames a newly detected hand must be tracked before it can pinch
+pinch_off_frames = 3
+filter_min_cutoff = 1.2   # lower = smoother at rest, more lag
+filter_beta = 0.015       # higher = less lag on fast moves
+lost_frames = 5
+swipe_enabled = true
+swipe_min_distance = 0.28 # fraction of image width
+swipe_max_duration = 0.45
+swipe_cooldown = 0.9
+
+[interaction]
+min_frame_size = 60
+handle_radius = 34
+follow_speed = 22
+rotation_snap_degrees = 4
+max_frames = 12
+trash_radius = 70
+
+[ui]
+window_width = 1280
+window_height = 720
+fullscreen = false
+target_fps = 60
+show_skeleton = true
+show_onboarding = true
+default_effect = "neon"
+# Modes in Tab / V-sign order. Also available: "energy", "particles"
+modes = ["frames", "cutout", "web", "count", "draw", "physics"]
+screenshot_dir = "~/Pictures/AIRFRAME"
+theme = "neon"      # or "retro" — press T in the app to switch
